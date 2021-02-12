@@ -1,6 +1,6 @@
 const HttpsProxyAgent = require("https-proxy-agent")
 
-export class PatchedHttpsProxyAgent extends HttpsProxyAgent {
+class PatchedHttpsProxyAgent extends HttpsProxyAgent {
     constructor(opts) {
         super(opts);
         this.ca = opts.ca;
@@ -10,3 +10,5 @@ export class PatchedHttpsProxyAgent extends HttpsProxyAgent {
         return super.callback(req, Object.assign(opts, { ca: this.ca }));
     }
 }
+
+exports.default = PatchedHttpsProxyAgent;
